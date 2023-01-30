@@ -28,5 +28,5 @@ Repeat the above but use docker pause and docker unpause to simulate an HTTP dis
 curl -u elastic:changeme -X POST http://localhost:9200/_security/realm/ldap1/_clear_cache | jq
 docker pause es-docker-ldap_ldap1_1
 curl -u elastic:changeme -X POST http://localhost:9200/_security/realm/ldap1/_clear_cache | jq
-curl -u lisa:simpson http://localhost:9200/_security/_authenticate | jq # This errors due to an bug !
+curl -u lisa:simpson http://localhost:9200/_security/_authenticate | jq # This errors due to https://github.com/elastic/elasticsearch/issues/93353
 ```

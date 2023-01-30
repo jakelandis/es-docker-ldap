@@ -1,0 +1,14 @@
+dn: cn=lisa,dc=example,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+cn: lisa
+uid: lisa
+sn: 3
+userPassword: simpson
+mail: lisa@springfield.com
+
+dn: cn=simpsons,dc=example,dc=org
+cn: simpsons
+objectClass: groupOfNames
+objectClass: top
+member: cn=lisa,dc=example,dc=org

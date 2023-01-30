@@ -1,0 +1,30 @@
+version: '2.4'
+services:
+
+  ldap1:
+    image: osixia/openldap:1.5.0
+    volumes:
+      - ./user.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/user.ldif
+    ports:
+      - "3089:389"
+    command: [ --copy-service, --loglevel, debug ]
+
+  ldap2:
+    image: osixia/openldap:1.5.0
+    volumes:
+      - ./user.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/user.ldif
+    ports:
+      - "3099:389"
+    command: [ --copy-service, --loglevel, debug ]  
+
+  es0:
+    image: elasticsearch:8.6.0
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 9200:9200
+    volumes:
+      - ./es0.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - ./log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties 
+
